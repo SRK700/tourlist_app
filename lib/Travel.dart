@@ -38,7 +38,7 @@ class _TravelDataPageState extends State<TravelDataPage> {
         backgroundColor: Colors.lightGreen.shade400,
         leading: IconButton(
           icon: Icon(Icons.home_outlined),
-          color: Colors.red,
+          color: Colors.black, // Change the color here
           onPressed: () {},
         ),
         title: Row(
@@ -47,7 +47,9 @@ class _TravelDataPageState extends State<TravelDataPage> {
             Text(
               'Travel',
               style: TextStyle(
-                color: Colors.black,
+                color: Colors.black, // Change the color here
+                fontWeight: FontWeight.bold,
+                fontSize: 20,
               ),
             ),
             IconButton(
@@ -78,34 +80,49 @@ class _TravelDataPageState extends State<TravelDataPage> {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 SizedBox(height: 20),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Image.asset(
-                      'images/icon1.png',
-                      width: 40,
-                      height: 40,
-                    ),
-                    SizedBox(width: 10),
-                    Text(
-                      'Travel',
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset(
+                        'images/icon1.png',
+                        width: 40,
+                        height: 40,
                       ),
-                    ),
-                  ],
+                      SizedBox(width: 10),
+                      Text(
+                        'Travel',
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.lightGreen.shade400,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
                 Expanded(
                   child: SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: DataTable(
+                      columnSpacing: 20.0,
+                      headingTextStyle: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                        color: Colors.black, // Change the color here
+                      ),
+                      dataRowColor: MaterialStateProperty.all<Color>(
+                          Colors.lightGreen.shade50), // Light Green Shade 50
                       columns: <DataColumn>[
-                        DataColumn(label: Icon(Icons.show_chart)), // Show icon
-                        DataColumn(label: Text('place_name')),
-                        DataColumn(label: Text('description')),
-                        DataColumn(label: Text('latitude.')),
-                        DataColumn(label: Text('longitude.')),
+                        DataColumn(
+                            label: Icon(Icons.show_chart,
+                                color:
+                                    Colors.lightGreen.shade400)), // Show icon
+                        DataColumn(label: Text('Place Name')),
+                        DataColumn(label: Text('Description')),
+                        DataColumn(label: Text('Latitude')),
+                        DataColumn(label: Text('Longitude')),
                         DataColumn(label: Text('Edit')),
                         DataColumn(label: Text('Delete')),
                       ],
@@ -114,7 +131,8 @@ class _TravelDataPageState extends State<TravelDataPage> {
                           cells: <DataCell>[
                             DataCell(
                               IconButton(
-                                icon: Icon(Icons.visibility),
+                                icon: Icon(Icons.visibility,
+                                    color: Colors.lightGreen.shade400),
                                 onPressed: () {
                                   // Implement logic to show details for the selected data
                                   // ...
@@ -127,7 +145,7 @@ class _TravelDataPageState extends State<TravelDataPage> {
                             DataCell(Text(data['longitude'].toString())),
                             DataCell(
                               IconButton(
-                                icon: Icon(Icons.edit),
+                                icon: Icon(Icons.edit, color: Colors.blue),
                                 onPressed: () {
                                   Navigator.push(
                                     context,
@@ -141,7 +159,7 @@ class _TravelDataPageState extends State<TravelDataPage> {
                             ),
                             DataCell(
                               IconButton(
-                                icon: Icon(Icons.delete),
+                                icon: Icon(Icons.delete, color: Colors.red),
                                 onPressed: () {
                                   Navigator.push(
                                     context,

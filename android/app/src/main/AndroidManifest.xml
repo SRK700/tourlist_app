@@ -3,6 +3,8 @@
         android:label="tourlism_root_641463023"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+        <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyDq8mBUxUVJ9kgJ3EQjewf9tf-3AQ8mSTE"/>
+        
         <activity
             android:name=".MainActivity"
             android:exported="true"

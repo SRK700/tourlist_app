@@ -35,7 +35,7 @@ class _StoreDataPageState extends State<StoreDataPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.lightGreen.shade400,
+        backgroundColor: Color(0xFF3F51B5), // Deep Purple
         leading: IconButton(
           icon: Icon(Icons.home_outlined),
           color: Colors.red,
@@ -47,7 +47,9 @@ class _StoreDataPageState extends State<StoreDataPage> {
             Text(
               'Store',
               style: TextStyle(
-                color: Colors.black,
+                color: Colors.white,
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
               ),
             ),
             IconButton(
@@ -90,8 +92,9 @@ class _StoreDataPageState extends State<StoreDataPage> {
                     Text(
                       'Store',
                       style: TextStyle(
-                        fontSize: 18,
+                        fontSize: 20,
                         fontWeight: FontWeight.bold,
+                        color: Color(0xFF3F51B5),
                       ),
                     ),
                   ],
@@ -100,19 +103,49 @@ class _StoreDataPageState extends State<StoreDataPage> {
                   child: SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: DataTable(
+                      columnSpacing: 20.0,
+                      headingTextStyle: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                        color: Colors.white,
+                      ),
+                      dataRowColor: MaterialStateProperty.all<Color>(
+                          Color(0xFFC5CAE9)), // Light Purple
                       columns: <DataColumn>[
-                        DataColumn(label: Icon(Icons.shop)), // Show shop icon
-                        DataColumn(label: Text('store_name')),
-                        DataColumn(label: Text('location')),
-                        DataColumn(label: Text('Edit')),
-                        DataColumn(label: Text('Delete')),
+                        DataColumn(
+                          label: Icon(Icons.shop, size: 30),
+                        ), // Show shop icon
+                        DataColumn(
+                          label: Text(
+                            'Store Name',
+                            style: TextStyle(color: Colors.black),
+                          ),
+                        ),
+                        DataColumn(
+                          label: Text(
+                            'Location',
+                            style: TextStyle(color: Colors.black),
+                          ),
+                        ),
+                        DataColumn(
+                          label: Text(
+                            'Edit',
+                            style: TextStyle(color: Colors.black),
+                          ),
+                        ),
+                        DataColumn(
+                          label: Text(
+                            'Delete',
+                            style: TextStyle(color: Colors.black),
+                          ),
+                        ),
                       ],
                       rows: snapshot.data!.map((data) {
                         return DataRow(
                           cells: <DataCell>[
                             DataCell(
                               IconButton(
-                                icon: Icon(Icons.store),
+                                icon: Icon(Icons.store, size: 30),
                                 onPressed: () {
                                   // Implement logic to show details for the selected data
                                   // ...
@@ -123,7 +156,7 @@ class _StoreDataPageState extends State<StoreDataPage> {
                             DataCell(Text(data['location'].toString())),
                             DataCell(
                               IconButton(
-                                icon: Icon(Icons.edit),
+                                icon: Icon(Icons.edit, size: 30),
                                 onPressed: () {
                                   Navigator.push(
                                     context,
@@ -137,7 +170,7 @@ class _StoreDataPageState extends State<StoreDataPage> {
                             ),
                             DataCell(
                               IconButton(
-                                icon: Icon(Icons.delete),
+                                icon: Icon(Icons.delete, size: 30),
                                 onPressed: () {
                                   Navigator.push(
                                     context,

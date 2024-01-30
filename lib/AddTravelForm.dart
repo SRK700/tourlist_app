@@ -17,7 +17,6 @@ class _AddTravelFormState extends State<AddTravelForm> {
   TextEditingController longitudeController = TextEditingController();
 
   int generateRandomPlaceId() {
-    // Generate a random place_id, you can customize this logic as needed
     return Random().nextInt(1000);
   }
 
@@ -75,7 +74,10 @@ class _AddTravelFormState extends State<AddTravelForm> {
             children: [
               TextFormField(
                 controller: placeNameController,
-                decoration: InputDecoration(labelText: 'Place Name'),
+                decoration: InputDecoration(
+                  labelText: 'Place Name',
+                  icon: Icon(Icons.place),
+                ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Please enter a place name';
@@ -83,9 +85,13 @@ class _AddTravelFormState extends State<AddTravelForm> {
                   return null;
                 },
               ),
+              SizedBox(height: 10),
               TextFormField(
                 controller: descriptionController,
-                decoration: InputDecoration(labelText: 'Description'),
+                decoration: InputDecoration(
+                  labelText: 'Description',
+                  icon: Icon(Icons.description),
+                ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Please enter a description';
@@ -93,9 +99,13 @@ class _AddTravelFormState extends State<AddTravelForm> {
                   return null;
                 },
               ),
+              SizedBox(height: 10),
               TextFormField(
                 controller: latitudeController,
-                decoration: InputDecoration(labelText: 'Latitude'),
+                decoration: InputDecoration(
+                  labelText: 'Latitude',
+                  icon: Icon(Icons.location_on),
+                ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Please enter a latitude';
@@ -103,9 +113,13 @@ class _AddTravelFormState extends State<AddTravelForm> {
                   return null;
                 },
               ),
+              SizedBox(height: 10),
               TextFormField(
                 controller: longitudeController,
-                decoration: InputDecoration(labelText: 'Longitude'),
+                decoration: InputDecoration(
+                  labelText: 'Longitude',
+                  icon: Icon(Icons.location_on),
+                ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Please enter a longitude';
@@ -122,6 +136,10 @@ class _AddTravelFormState extends State<AddTravelForm> {
                   }
                 },
                 child: Text('Save'),
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.blueAccent,
+                  padding: EdgeInsets.symmetric(vertical: 15),
+                ),
               ),
             ],
           ),
@@ -134,5 +152,8 @@ class _AddTravelFormState extends State<AddTravelForm> {
 void main() {
   runApp(MaterialApp(
     home: AddTravelForm(),
+    theme: ThemeData(
+      primaryColor: Colors.blue, // Set your desired primary color
+    ),
   ));
 }

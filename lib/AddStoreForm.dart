@@ -73,7 +73,11 @@ class _AddStoreFormState extends State<AddStoreForm> {
             children: [
               TextFormField(
                 controller: storeNameController,
-                decoration: InputDecoration(labelText: 'Store Name'),
+                decoration: InputDecoration(
+                  labelText: 'Store Name',
+                  border: OutlineInputBorder(),
+                  contentPadding: EdgeInsets.all(12.0),
+                ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Please enter a store name';
@@ -81,9 +85,14 @@ class _AddStoreFormState extends State<AddStoreForm> {
                   return null;
                 },
               ),
+              SizedBox(height: 20),
               TextFormField(
                 controller: locationController,
-                decoration: InputDecoration(labelText: 'Location'),
+                decoration: InputDecoration(
+                  labelText: 'Location',
+                  border: OutlineInputBorder(),
+                  contentPadding: EdgeInsets.all(12.0),
+                ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Please enter a location';
@@ -99,7 +108,17 @@ class _AddStoreFormState extends State<AddStoreForm> {
                     addStoreData();
                   }
                 },
-                child: Text('Save'),
+                child: Text(
+                  'Save',
+                  style: TextStyle(fontSize: 16),
+                ),
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.blueAccent,
+                  padding: EdgeInsets.symmetric(vertical: 15),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
               ),
             ],
           ),
@@ -112,5 +131,8 @@ class _AddStoreFormState extends State<AddStoreForm> {
 void main() {
   runApp(MaterialApp(
     home: AddStoreForm(),
+    theme: ThemeData(
+      primaryColor: Colors.blueAccent, // Set your desired primary color
+    ),
   ));
 }
